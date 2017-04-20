@@ -24,4 +24,10 @@ Route::post('comment', 'CommentController@store');
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function(){
 	Route::get('/', 'HomeController@index');
 	Route::resource('/article', 'ArticleController');
+	
+	// Evernote
+	Route::get('/evernote/notebooks', 'EvernoteController@notebooks');
+	Route::get('/evernote/notebook/{guid}', 'EvernoteController@notebook');
+	Route::get('/evernote/notebook/{guid}/notes', 'EvernoteController@notes');
+	Route::get('/evernote/note/{guid}', 'EvernoteController@note');
 });
