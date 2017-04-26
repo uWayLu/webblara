@@ -82,8 +82,29 @@ class EvernoteController extends Controller
 
 		$output .= "<br /><br />Name : " . $note->title;
 		$output .= "<br />Guid : " . $note->guid;
+		// $output .= '<br /><a target="_blank" href="/admin/evernote/note/' . $note->guid . '/tag">Get Tags of note.</a>';		
 
 		print_r($note);
+		// return $output;
+    }
+
+    public function note_tag($guid)
+    {
+		// $note = $this->client->getNote ($guid);
+
+		// $tagGuids = $note->getEdamNote ()->tagGuids;
+		// $tagNames = $this->client->getAdvancedClient ()->getNoteStore ()->getNoteTagNames ($note->getGuid ());
+
+		// // 如果要拉某個 Notebook 下的所有 Tag
+		// // $bookTags = $this->client->getAdvancedClient ()->getNoteStore ()->listTagsByNotebook ($book->getGuid ());
+
+		// $output = '';
+
+		// foreach ((Array) $tagGuids as $k => $guid) {
+		// $output .= "<br /><br />Name : " . $tagNames[$k];
+		// $output .= "<br />Guid : " . $guid;
+		// }
+
 		// return $output;
     }
 }

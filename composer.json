@@ -6,6 +6,9 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "acacha/admin-lte-template-laravel": "4.*",
+        "evernote/evernote-cloud-sdk-php": "*@dev",
+        "laravel-notification-channels/evernote": "*@dev",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0"
     },
@@ -43,6 +46,10 @@
             "php artisan optimize"
         ]
     },
+    "repositories": [ 
+        { "type": "path", "url": "packages/evernote/evernote-cloud-sdk-php" }, 
+        { "type": "path", "url": "packages/laravel-notification-channels/evernote" }
+    ],
     "config": {
         "preferred-install": "dist",
         "sort-packages": true
