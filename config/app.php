@@ -177,11 +177,14 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+<<<<<<< HEAD
         /*
         * Acacha AdminLTE template provider
          */
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,        
 
+=======
+>>>>>>> 5bee1d9d45b99d851ecdcc7ae48c7d84f5f3a27a
     ],
 
     /*
@@ -230,10 +233,13 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+<<<<<<< HEAD
         /*
         * Acacha AdminLTE template alias
         */
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,        
+=======
+>>>>>>> 5bee1d9d45b99d851ecdcc7ae48c7d84f5f3a27a
 
     ],
 
