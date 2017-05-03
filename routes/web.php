@@ -30,5 +30,6 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
 	Route::get('/evernote/notebook/{guid}', 'EvernoteController@notebook');
 	Route::get('/evernote/notebook/{guid}/notes', 'EvernoteController@notes');
 	Route::get('/evernote/note/{guid}', 'EvernoteController@note');
-	// Route::get('/evernote/note/{guid}/tag', 'EvernoteController@note_tag');
+	Route::get('/evernote/note/{guid}/tag', 'EvernoteController@note_tag');
+	Route::get('/evernote/tags', 'EvernoteController@tags');
 });

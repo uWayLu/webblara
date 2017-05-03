@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Taipei',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh-TW',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,9 +178,13 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
-        * Acacha AdminLTE template provider
+         * Acacha AdminLTE template provider
          */
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,        
+        /*
+         * Laravel Taggable Trait provider
+         */
+        Conner\Tagging\Providers\TaggingServiceProvider::class,
     ],
 
     /*
