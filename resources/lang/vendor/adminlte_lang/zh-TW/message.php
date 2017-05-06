@@ -133,4 +133,9 @@ return [
     'loggedin'                => 'Logged in!',
     'entering'                => 'Entering...',
     'registered'              => 'User Registered!',
+
+    /* 以下個人化 */
+    'evernote'                => 'Evernote',
+    'tags'                    => '標籤',
+    'notebooks'               => '筆記本列表',
 ];

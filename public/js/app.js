@@ -23578,7 +23578,10 @@ __webpack_require__(49);
 Vue.component('example', __webpack_require__(58));
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {
+    message: 'Hello, World! 20170506 added.'
+  }
 });
 
 /***/ }),

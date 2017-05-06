@@ -15,7 +15,8 @@ class EvernoteController extends Controller
 
     public function index()
     {
-    	return '使用 Evernote SDK php 開發中';
+    	// return '使用 Evernote SDK php 開發中';
+    	return view('adminlte::evernote.tags');
     }
 
     public function notebooks()

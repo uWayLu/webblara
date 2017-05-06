@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
 	Route::resource('/article', 'ArticleController');
 	
 	// Evernote
+	Route::get('/evernote', 'EvernoteController@index');
+
 	Route::get('/evernote/notebooks', 'EvernoteController@notebooks');
 	Route::get('/evernote/notebook/{guid}', 'EvernoteController@notebook');
 	Route::get('/evernote/notebook/{guid}/notes', 'EvernoteController@notes');

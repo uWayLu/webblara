@@ -43,9 +43,11 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href="#"></a>
-                <i class="fa fa-book"></i>
-                <span>{{ trans('adminlte_lang::message.evernote') }}</span>
+                <a href="#"><i class="fa fa-book"></i> <span>{{ trans('adminlte_lang::message.evernote') }}</span><i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('admin/evernote/tags') }}"><i class="fa fa-tags"></i> {{ trans('adminlte_lang::message.tags') }}</a></li>
+                    <li><a href="{{ url('admin/evernote/notebooks') }}"><i class="fa fa-list"></i> {{ trans('adminlte_lang::message.notebooks') }}</a></li>
+                </ul>
             </li>
         </ul><!-- /.sidebar-menu -->
     </section>
