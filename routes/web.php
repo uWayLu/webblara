@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
 	
 	// Evernote
 	Route::get('/evernote', 'EvernoteController@index');
+	Route::get('/evernote/get_oauth_token', 'EvernoteController@get_oauth_token');
 
 	Route::get('/evernote/notebooks', 'EvernoteController@notebooks');
 	Route::get('/evernote/notebook/{guid}', 'EvernoteController@notebook');
@@ -35,3 +36,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
 	Route::get('/evernote/note/{guid}/tag', 'EvernoteController@note_tag');
 	Route::get('/evernote/tags', 'EvernoteController@tags');
 });
+
+Route::group(['prefix' => 'webhook'], function(){
+	Route::get('/evernote', 'WebhookController@evernote');
+});
+

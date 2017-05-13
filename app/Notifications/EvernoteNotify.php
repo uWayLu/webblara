@@ -63,4 +63,12 @@ class EvernoteNotify extends Notification
             //
         ];
     }
+
+    /**
+     * Save Evernote webhook notification to database.
+     */
+    public function toDatabase($notifiable)
+    {
+        # code...
+    }
 }

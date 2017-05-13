@@ -14,7 +14,24 @@ require('./bootstrap');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('evernote-tags', require('./components/evernote/Tags.vue'));
+// Vue.component('evernote-tags', {props: ['evernote'], template: '<li>{{ evernote.text }}</li>'});
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+	data: {
+		message: 'Hello, World! 20170506 added; npm run watch;',
+	    testList: [
+	      { text: '我が名は恵みん！' },
+	      { text: 'アークウィザードを生業とし、' },
+	      { text: '最強の攻撃魔法、爆裂魔法を操る者！' },
+	      { text: 'Explosion!!!!!!' },	      
+	    ]
+	},
+	methods: {
+		save_tags: function(event) {
+			console.log('儲存 tags 值');
+			console.log(event.currentTarget.innerText.trim());			
+		}
+	}
 });
