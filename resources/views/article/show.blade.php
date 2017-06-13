@@ -25,7 +25,7 @@
         </div>
         <div id="content" style="margin: 20px;">
             <p>
-                {{ $article->body }}
+                {!! $article->body !!}
             </p>
         </div>
 

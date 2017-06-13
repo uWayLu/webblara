@@ -18,6 +18,8 @@ class CreateArticleTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('body')->nullable();
+            $table->string('source')->default('self');
+            $table->string('source_id')->default('');
             $table->integer('user_id');
             $table->timestamps();
         });

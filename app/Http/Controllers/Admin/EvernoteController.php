@@ -9,16 +9,15 @@ class EvernoteController extends Controller
 {
 	public function __construct()
 	{
-		// $this->token = 'S=s242:U=1edcefd:E=162b9d009b9:C=15b621edae8:P=1cd:A=en-devtoken:V=2:H=7be65e236b8886a878aa604ecd76eb6b';
-		$this->token = 'uwaylu.15BE8BC0E65.687474703A2F2F776562626C6172612E756264646E732E6F72672F61646D696E2F657665726E6F74652F6765745F6F617574685F746F6B656E.CAD3B1E8A9687F26DB6D7CA3E6736C0C';
-		$this->client = new \Evernote\Client ($this->token, $sandbox = true);		
+		$this->token = 'S=s242:U=1edcefd:E=162b9d009b9:C=15b621edae8:P=1cd:A=en-devtoken:V=2:H=7be65e236b8886a878aa604ecd76eb6b';
+		$this->client = new \Evernote\Client ($this->token, $sandbox = false);		
 	}
 
     public function index()
     {
     	// return '使用 Evernote SDK php 開發中';
     	// print_r( $data=json_decode($this->tags()) );
-    	return view('adminlte::evernote.tags',  ['data' => json_decode($this->tags())]);
+    	return view('adminlte::evernote',  ['data' => json_decode($this->tags())]);
     }
 
     public function get_oauth_token(Request $request){
@@ -57,28 +56,32 @@ class EvernoteController extends Controller
 
 		return $output;
 
-		// 這個 token 應該被 return 並存起來(有期限)
     }
 
     public function notebooks()
     {
 		$notebooks = $this->client->listNotebooks();
 
-		$output = '';
-		foreach ($notebooks as $notebook) {
-			$output .= "<br /><br />Name : " . $notebook->name;
-			$output .= "<br />Guid : " . $notebook->guid;
-			$output .= "<br />Is Business : ";
-			$output .= $notebook->isBusinessNotebook () ? "Y" : "N";
-			$output .= "<br />Is Default  : ";
-			$output .= $notebook->isDefaultNotebook () ? "Y" : "N";
-			$output .= "<br />Is Linked   : ";
-			$output .= $notebook->isLinkedNotebook () ? "Y" : "N";
-			$output .= '<br /><a target="_blank" href="notebook/' . $notebook->guid . '">Read notebook</a>';
-		}
+		// $output = '';
+		// foreach ($notebooks as $notebook) {
+		// 	$output .= "<br /><br />Name : " . $notebook->name;
+		// 	$output .= "<br />Guid : " . $notebook->guid;
+		// 	$output .= "<br />Is Business : ";
+		// 	$output .= $notebook->isBusinessNotebook () ? "Y" : "N";
+		// 	$output .= "<br />Is Default  : ";
+		// 	$output .= $notebook->isDefaultNotebook () ? "Y" : "N";
+		// 	$output .= "<br />Is Linked   : ";
+		// 	$output .= $notebook->isLinkedNotebook () ? "Y" : "N";
+		// 	$output .= '<br /><a target="_blank" href="notebook/' . $notebook->guid . '">Read notebook</a>';
+		// }
 
-		return $output;
-		// print_r($notebooks);
+		// return $output;
+		// return json_encode($notebooks[0]->getEdamNotebook());
+    	// return json_encode($notebooks, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+		$notebooks = array_map(function($notebook){ return $notebook->getEdamNotebook(); }, $notebooks);
+
+		// return json_encode(json_decode($notebooks), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+		return json_encode($notebooks, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     }
 
     public function notebook($guid)
@@ -112,8 +115,22 @@ class EvernoteController extends Controller
 			$output .= '<br /><a target="_blank" href="/admin/evernote/note/' . $note->guid . '">Read note</a>';		
 		}
 
+		// $notes[0]->contentHash = mb_convert_encoding($notes[0]->contentHash, 'utf-8');
+		// print_r(json_encode($notes[0]));
+
+		// return $output;
+		// echo gettype($notes);
+		// print_r(json_encode($notes));
+
+		$notes = array_map(function($note){
+			$note->contentHash = '';
+			$note->resources = '';
+			return $note;
+		}, $notes);
+
 		// print_r($notes);
-		return $output;
+
+		return $notes;
     }
 
     public function note($guid)
@@ -126,8 +143,12 @@ class EvernoteController extends Controller
 		$output .= "<br />Guid : " . $note->guid;
 		$output .= '<br /><a target="_blank" href="/admin/evernote/note/' . $note->guid . '/tag">Get Tags of note.</a>';		
 
-		// print_r($note);
-		return $output;
+		$note = $note->getEdamNote();
+		$note->contentHash = '';
+
+		// return 
+		return json_encode($note);
+		// return $output;
     }
 
     public function note_tag($guid)
@@ -153,7 +174,6 @@ class EvernoteController extends Controller
     public function tags()
     {
 		$tags = $this->client->getAdvancedClient ()->getNoteStore ()->listTags ();
-    	
     	return json_encode($tags, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     }
 }

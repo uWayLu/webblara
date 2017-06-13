@@ -12,7 +12,8 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'WebbLara'),
+    // 'name' => env('APP_NAME', 'WebbLara'),
+    'name' => (@$_ENV['APP_NAME']) ? $_ENV['APP_NAME'] : 'WebbLara',
 
     /*
     |--------------------------------------------------------------------------
@@ -25,7 +26,8 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    // 'env' => env('APP_ENV', 'production'),
+    'env' => (@$_ENV['APP_ENV']) ? $_ENV['APP_ENV'] : 'production',    
 
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +40,8 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    // 'debug' => env('APP_DEBUG', true),
+    'debug' => (@$_ENV['APP_DEBUG']) ? $_ENV['APP_DEBUG'] : true,    
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +54,8 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    // 'url' => env('APP_URL', 'http://localhost'),
+    'url' => (@$_ENV['APP_URL']) ? $_ENV['APP_URL'] : 'http://localhost',
 
     /*
     |--------------------------------------------------------------------------
@@ -103,7 +107,8 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    // 'key' => env('APP_KEY'),
+    'key' => (@$_ENV['APP_KEY']) ? $_ENV['APP_KEY'] : null,
 
     'cipher' => 'AES-256-CBC',
 

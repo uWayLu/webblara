@@ -23,7 +23,7 @@
 						</div>
 					</div>
 					<div class="box-body">
-						{{ trans('adminlte_lang::message.logged') }}. Start creating your amazing application!
+						{{ trans('adminlte_lang::message.logged') }}. Start creating your amazing application!^_<
 					</div>
 					<!-- /.box-body -->
 				</div>

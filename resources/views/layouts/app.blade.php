@@ -19,10 +19,31 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    <style type="text/css">
+    .banner {
+        background-image: url('https://scontent.ftpe4-2.fna.fbcdn.net/v/t31.0-8/621840_249283501840830_882746766_o.jpg?oh=91c41d24e3148d0bcece9e68db9442e3&oe=59A39DC1');
+        background-color: grey;
+        background-repeat: no-repeat;
+        /*background-attachment: fixed;*/
+        background-position: top right;
+        height: 250px;
+        margin: 50px auto 20px;
+        border-bottom: grey 1px dotted;
+    }
+    .banner h1{
+        color: rgb(255, 255, 255);
+        font-size: 40px;
+        font-weight: bold;
+        text-shadow: rgb(71, 71, 71) 3px 5px 2px;
+        height: 250px;
+        line-height: 250px;
+        margin-left: 5%;
+    }
+    </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -51,7 +72,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -80,6 +101,12 @@
 
         @yield('content')
     </div>
+
+    <footer class="panel-footer">
+        <div class="container">
+            <p class="text-info text-center"><strong>WebbLara</strong> © 2017 <a href="#">Webb Lu</a>. All rights reserved.</p>
+        </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
