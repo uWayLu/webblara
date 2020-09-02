@@ -36,6 +36,6 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "bootstrap-vue": "^0.15.8"
+    "bootstrap-vue": "^2.16.0"
   }
 }
